@@ -1,17 +1,23 @@
 package org.cnu.realcoding.repository;
 
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.cnu.realcoding.domain.Dog;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
 
 public class DogRepository {
 
+    private MongoTemplate mongoTemplate;
     public void insertDog(Dog dog) {
-        // mongoTemplate.insert(dog);
+        //
     }
 
     public Dog findDog(String name) {
-        // return mongoTemplate
+        return mongoTemplate.
+                findOne(
+                        Query.query(Criteria.where("name").is(name)), Dog.class);
     }
 
 
