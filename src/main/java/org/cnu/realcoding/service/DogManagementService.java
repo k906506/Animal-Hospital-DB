@@ -70,6 +70,9 @@ public class DogManagementService {
         dogRepository.changeDogKind(dogName, newKind);
     }
 
+    public void changeAllInfo(String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
+    }
+
     /*
     public List<String> addMedicalRecords(String dogName, String newMedicalRecords) {
         Dog dog = dogRepository.findDog(dogName, 1);

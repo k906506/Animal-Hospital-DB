@@ -45,27 +45,20 @@ public class DogController {
         return dogManagementService.getDogByOwnerPhoneNumber(ownerPhoneNumber);
     }
 
-<<<<<<< HEAD
+
     // HTTP Method : Put
     @GetMapping("/dogs/")
     public Dog changeAllInfo( String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber){
-=======
-    /* HTTP Method : Put
-    public Dog changeAllInfo(@RequestBody String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber){
->>>>>>> bbcb6e76b902cf70f0c96d1be15ee217742652e0
+
         // 이전 강아지 이름으로 모든 variable 변경
         return dogManagementService.changeAllInfo(oldName, newName, newKind, newOwnerName, newOwnerPhoneNumber);
     }
 
-     */
+
     // HTTP Method : Patch
     public void changeDogKind(@RequestBody String dogName, String newKind){
         // dogName으로 dog 검색하여 newKind로 품종 변경
         dogManagementService.changeDogKind(dogName, newKind);
     }
-    // HTTP Method : Patch
-//    public List<String> addMedicalRecords(@RequestBody String dogName, String newMedicalRecords){
-//        // dogName으로 dog 검색하여 newMedicalRecords 추가
-//        return dogManagementService.addMedicalRecords(dogName, newMedicalRecords);
-//    }
+
 }
