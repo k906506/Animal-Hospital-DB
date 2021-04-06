@@ -43,7 +43,7 @@ public class DogManagementService {
         for (Dog dog : dogRepository.getDogs()) {
             if (!dog.getName().equals(owner)) { // 주인 이름이 겹치면
                 throw new DogNotFoundException(); // 에러
-            }
+            }   
         }
         return dogRepository.findDog(owner); // 조회 후 반환
     }
