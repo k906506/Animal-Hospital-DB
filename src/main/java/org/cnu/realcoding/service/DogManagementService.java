@@ -70,12 +70,7 @@ public class DogManagementService {
         dogRepository.changeDogKind(dogName, newKind);
     }
 
-<<<<<<< HEAD
-    public void changeAllInfo(String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
 
-    }
-
-=======
     public void changeAllInfo(String dogName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
         Dog dog = dogRepository.findDog(dogName, 1);
         if(dog == null) {
@@ -90,28 +85,4 @@ public class DogManagementService {
         }
         dogRepository.addMedicalRecords(dogName, newMedicalRecords);
     }
->>>>>>> 0392d266e5fb751127c5d8ef1a61e4c9f34405a3
-    /*
-    public List<String> addMedicalRecords(String dogName, String newMedicalRecords) {
-        Dog dog = dogRepository.findDog(dogName, 1);
-
-        if(dog == null){
-            throw new DogNotFoundException();
-        }
-        List<String> medicalRecords = dogRepository.addMedicalRecords(newMedicalRecords);
-        medicalRecords.add(newMedicalRecords);
-
-        return medicalRecords;
-    }
-
-    public Dog changeAllInfo(String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
-        Dog dog = dogRepository.findDog(oldName, 1);
-
-        if(dog == null){
-            throw new DogNotFoundException();
-        }
-        dog = dogRepository.changeAllInfo(newName, newKind, newOwnerName, newOwnerPhoneNumber);
-        return dog;
-    }
-    */
 }

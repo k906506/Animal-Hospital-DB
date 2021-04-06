@@ -66,7 +66,6 @@ public class DogRepository {
 
     public void addMedicalRecords(String name, String newMedicalRecords) {
 
-
     }
 
 
