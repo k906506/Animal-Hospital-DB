@@ -1,5 +1,12 @@
 package org.cnu.realcoding.repository;
 
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.cnu.realcoding.domain.Dog;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+
+import java.util.List;
+
 import lombok.Getter;
 import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.exception.DogNotFoundException;
@@ -20,7 +27,8 @@ public class DogRepository {
     private List<Dog> dogs = new ArrayList<>();
 
     public void insertDog(Dog dog) {
-        mongoTemplate.insert(dog); // 데이터 추
+
+        //
     }
 
     public Dog findDog(String name) {
@@ -30,6 +38,20 @@ public class DogRepository {
         Dog dog = (Dog) mongoTemplate.find(query, mongoTemplate.getClass()); // 조회 후 데이터 반환
         return dog;
     }
+
+    public Dog changeDogKind(String newKind) {
+        // return changedDog
+    }
+
+    public List<String> addMedicalRecords(String newMedicalRecords) {
+        // return added new List;
+    }
+
+    public Dog changeAllInfo(String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
+
+        //mongoTemplate.insert(dog); // 데이터 추
+    }
+
     public boolean checkDogName(String name){ // 이름으로 검색
         for(Dog dog : dogs){
             if (dog.getName().equals(name)) {
@@ -53,5 +75,6 @@ public class DogRepository {
             }
         }
         return false;
+
     }
 }
