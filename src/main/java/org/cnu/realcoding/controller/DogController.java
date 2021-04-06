@@ -46,19 +46,24 @@ public class DogController {
     }
 
 
-    // HTTP Method : Put
-    @GetMapping("/dogs/")
-    public Dog changeAllInfo( String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber){
-
+    //HTTP Method : Put
+    @PutMapping("/dogs/{oldName}")
+    public void changeAllInfo(@RequestBody String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber){
         // 이전 강아지 이름으로 모든 variable 변경
-        return dogManagementService.changeAllInfo(oldName, newName, newKind, newOwnerName, newOwnerPhoneNumber);
+        dogManagementService.changeAllInfo(oldName, newName, newKind, newOwnerName, newOwnerPhoneNumber);
     }
+
 
 
     // HTTP Method : Patch
-    public void changeDogKind(@RequestBody String dogName, String newKind){
+    @PatchMapping("/dogs/kind/{kind}")
+    public void changeDogKind(@PathVariable String dogName,@RequestBody String newKind){
         // dogName으로 dog 검색하여 newKind로 품종 변경
         dogManagementService.changeDogKind(dogName, newKind);
     }
-
+    // HTTP Method : Patch
+//    public List<String> addMedicalRecords(@RequestBody String dogName, String newMedicalRecords){
+//        // dogName으로 dog 검색하여 newMedicalRecords 추가
+//        return dogManagementService.addMedicalRecords(dogName, newMedicalRecords);
+//    }
 }

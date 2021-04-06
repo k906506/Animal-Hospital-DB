@@ -71,6 +71,7 @@ public class DogManagementService {
     }
 
     public void changeAllInfo(String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
+
     }
 
     /*
