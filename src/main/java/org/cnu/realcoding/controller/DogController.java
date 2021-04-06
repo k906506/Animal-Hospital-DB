@@ -5,19 +5,22 @@ import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.exception.AlreadyExist;
 import org.cnu.realcoding.exception.DogNotFoundException;
 import org.cnu.realcoding.service.DogManagementService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 public class DogController {
 
+    @Autowired
     private DogManagementService dogManagementService;
 
     @PostMapping("/dogs")
+    @ResponseStatus(HttpStatus.CREATED)
     public void createDog(@RequestBody Dog dog){
+        System.out.println("hi");
         dogManagementService.insertDog(dog);
     }
 
@@ -42,20 +45,27 @@ public class DogController {
         return dogManagementService.getDogByOwnerPhoneNumber(ownerPhoneNumber);
     }
 
+<<<<<<< HEAD
     // HTTP Method : Put
     @GetMapping("/dogs/")
     public Dog changeAllInfo( String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber){
+=======
+    /* HTTP Method : Put
+    public Dog changeAllInfo(@RequestBody String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber){
+>>>>>>> bbcb6e76b902cf70f0c96d1be15ee217742652e0
         // 이전 강아지 이름으로 모든 variable 변경
         return dogManagementService.changeAllInfo(oldName, newName, newKind, newOwnerName, newOwnerPhoneNumber);
     }
+
+     */
     // HTTP Method : Patch
-    public Dog changeDogKind(@RequestBody String dogName, String newKind){
+    public void changeDogKind(@RequestBody String dogName, String newKind){
         // dogName으로 dog 검색하여 newKind로 품종 변경
-        return dogManagementService.changeDogKind(dogName, newKind);
+        dogManagementService.changeDogKind(dogName, newKind);
     }
     // HTTP Method : Patch
-    public List<String> addMedicalRecords(@RequestBody String dogName, String newMedicalRecords){
-        // dogName으로 dog 검색하여 newMedicalRecords 추가
-        return dogManagementService.addMedicalRecords(dogName, newMedicalRecords);
-    }
+//    public List<String> addMedicalRecords(@RequestBody String dogName, String newMedicalRecords){
+//        // dogName으로 dog 검색하여 newMedicalRecords 추가
+//        return dogManagementService.addMedicalRecords(dogName, newMedicalRecords);
+//    }
 }
