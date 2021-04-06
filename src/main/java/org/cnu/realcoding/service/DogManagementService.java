@@ -29,7 +29,7 @@ public class DogManagementService {
 
 
     public List<Dog> getAllDogs() {
-        return dogRepository.getDogs();
+        return dogRepository.getAllDogs();
 
     }
 
@@ -70,10 +70,27 @@ public class DogManagementService {
         dogRepository.changeDogKind(dogName, newKind);
     }
 
+<<<<<<< HEAD
     public void changeAllInfo(String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
 
     }
 
+=======
+    public void changeAllInfo(String dogName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
+        Dog dog = dogRepository.findDog(dogName, 1);
+        if(dog == null) {
+            throw new DogNotFoundException();
+        }
+        dogRepository.changeAllInfo(dogName, newName,newKind,newOwnerName,newOwnerPhoneNumber);
+    }
+    public void addMedicalRecords(String dogName, String newMedicalRecords){
+        Dog dog = dogRepository.findDog(dogName, 1);
+        if(dog == null) {
+            throw new DogNotFoundException();
+        }
+        dogRepository.addMedicalRecords(dogName, newMedicalRecords);
+    }
+>>>>>>> 0392d266e5fb751127c5d8ef1a61e4c9f34405a3
     /*
     public List<String> addMedicalRecords(String dogName, String newMedicalRecords) {
         Dog dog = dogRepository.findDog(dogName, 1);

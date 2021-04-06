@@ -32,7 +32,9 @@ public class DogRepository {
         mongoTemplate.insert(dog);
         //
     }
-
+    public List<Dog> getAllDogs(){
+        return mongoTemplate.findAll(Dog.class);
+    }
     public Dog findDog(String name, int i) {
         Criteria cri;
         switch (i){
@@ -61,17 +63,26 @@ public class DogRepository {
         mongoTemplate.updateFirst(query, update, Dog.class);
     }
 
-    /*
-    public List<String> addMedicalRecords(String newMedicalRecords) {
-        // return added new List;
+
+    public void addMedicalRecords(String name, String newMedicalRecords) {
+
+
     }
 
 
-    public Dog changeAllInfo(String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
-
-        //mongoTemplate.insert(dog); // 데이터 추
+    public void changeAllInfo(String name, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
+        //dogName으로 찾은 dog의 모든 정보 변경
+        Query query = new Query(Criteria.where("name").is(name));
+        Update update_name = Update.update("name", newName);
+        Update update_kind = Update.update("kind", newKind);
+        Update update_OwnerName = Update.update("ownerName", newOwnerName);
+        Update update_OwnerPhoneNumber = Update.update("ownerPhoneNumber", newOwnerPhoneNumber);
+        mongoTemplate.updateFirst(query, update_name, Dog.class);
+        mongoTemplate.updateFirst(query, update_kind, Dog.class);
+        mongoTemplate.updateFirst(query, update_OwnerName, Dog.class);
+        mongoTemplate.updateFirst(query, update_OwnerPhoneNumber, Dog.class);
     }
-     */
+
 
     public boolean checkDogName(String name){ // 이름으로 검색
         for(Dog dog : dogs){
