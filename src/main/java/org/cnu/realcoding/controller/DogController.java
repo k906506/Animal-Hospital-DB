@@ -43,7 +43,8 @@ public class DogController {
     }
 
     // HTTP Method : Put
-    public Dog changeAllInfo(@RequestBody String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber){
+    @GetMapping("/dogs/")
+    public Dog changeAllInfo( String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber){
         // 이전 강아지 이름으로 모든 variable 변경
         return dogManagementService.changeAllInfo(oldName, newName, newKind, newOwnerName, newOwnerPhoneNumber);
     }
