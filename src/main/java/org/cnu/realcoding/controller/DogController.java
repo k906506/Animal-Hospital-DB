@@ -18,18 +18,12 @@ public class DogController {
     @PostMapping("/dogs")
     @ResponseStatus(HttpStatus.CREATED)
     public void createDog(@RequestBody Dog dog){
-        System.out.println("hi");
         dogManagementService.insertDog(dog);
     }
 
     @GetMapping("/dogs")
     public List<Dog> getAllDogs(){
         return dogManagementService.getAllDogs();
-    }
-
-    @GetMapping("/test")  // 테스트용!
-    public void test(){
-        throw new AlreadyExist();
     }
 
     @GetMapping("/dogs/name/{name}") // name으로 검색할 땐 /name/,,
@@ -47,23 +41,25 @@ public class DogController {
         return dogManagementService.getDogByOwnerPhoneNumber(ownerPhoneNumber);
     }
 
-    @RequestMapping(value="/dogs/{name}/change/{newKind}" , method = {RequestMethod.GET, RequestMethod.PATCH})
-    public void changeDogKind(@PathVariable String name,@PathVariable String newKind){
+    @RequestMapping(value="/dogs/change/{unique}/{newKind}" , method = {RequestMethod.GET, RequestMethod.PATCH})
+    public String changeDogKind(@PathVariable String unique,@PathVariable String newKind){
         // dogName으로 dog 검색하여 newKind로 품종 변경
-        System.out.print("Kind Changed");
-        dogManagementService.changeDogKind(name, newKind);
+        dogManagementService.changeDogKind(unique, newKind);
+        return "\n품종 변경 완료";
     }
 
     @RequestMapping(value="/dogs/change/{oldName}/{newName}/{newKind}/{newOwnerName}/{newOwnerPhoneNumber}" , method = {RequestMethod.GET, RequestMethod.PATCH})
-    public void changeAllInfo(@PathVariable String oldName, @PathVariable String newName, @PathVariable String newKind, @PathVariable String newOwnerName, @PathVariable String newOwnerPhoneNumber){
+    public String changeAllInfo(@PathVariable String oldName, @PathVariable String newName, @PathVariable String newKind, @PathVariable String newOwnerName, @PathVariable String newOwnerPhoneNumber){
         // 이전 강아지 이름으로 모든 variable 변경
-        System.out.print("All info Changed");
         dogManagementService.changeAllInfo(oldName, newName, newKind, newOwnerName, newOwnerPhoneNumber);
+        return "\nData Set 변경 완료";
+
     }
 
-    @RequestMapping(value="/dogs/{dogName}/add/{newMedicalRecords}" , method = {RequestMethod.GET, RequestMethod.PATCH})
-    public void addMedicalRecords(@PathVariable String dogName, @PathVariable String newMedicalRecords){
+    @RequestMapping(value="/dogs/add/{dogName}/{newMedicalRecords}" , method = {RequestMethod.GET, RequestMethod.PATCH})
+    public String addMedicalRecords(@PathVariable String dogName, @PathVariable String newMedicalRecords){
         // dogName으로 dog 검색하여 newMedicalRecords 추가
         dogManagementService.addMedicalRecords(dogName, newMedicalRecords);
+        return "\n진료 기록 추가";
     }
 }

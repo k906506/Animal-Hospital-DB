@@ -60,13 +60,18 @@ public class DogManagementService {
     }
 
 
-    public void changeDogKind(String dogName, String newKind) {
-        Dog dog = dogRepository.findDog(dogName, 1);
+    public void changeDogKind(String unique ,String newKind) {
+        int i = 0;
+        if(dogRepository.checkDogName(unique)) i = 1;
+        if(dogRepository.checkDogOwner(unique)) i = 2;
+        if(dogRepository.checkDogOwnerPhone(unique)) i = 3;
+
+        Dog dog = dogRepository.findDog(unique, i);
 
         if(dog == null) {
             throw new DogNotFoundException();
         }
-        dogRepository.changeDogKind(dogName, newKind);
+        dogRepository.changeDogKind(unique, i , newKind);
     }
 
 
