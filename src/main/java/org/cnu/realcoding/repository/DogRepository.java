@@ -76,10 +76,10 @@ public class DogRepository {
         Update update_kind = Update.update("kind", newKind);
         Update update_OwnerName = Update.update("ownerName", newOwnerName);
         Update update_OwnerPhoneNumber = Update.update("ownerPhoneNumber", newOwnerPhoneNumber);
-        mongoTemplate.updateFirst(query, update_name, Dog.class);
         mongoTemplate.updateFirst(query, update_kind, Dog.class);
         mongoTemplate.updateFirst(query, update_OwnerName, Dog.class);
         mongoTemplate.updateFirst(query, update_OwnerPhoneNumber, Dog.class);
+        mongoTemplate.updateFirst(query, update_name, Dog.class);
     }
 
 
