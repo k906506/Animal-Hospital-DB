@@ -70,6 +70,20 @@ public class DogManagementService {
         dogRepository.changeDogKind(dogName, newKind);
     }
 
+    public void changeAllInfo(String dogName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
+        Dog dog = dogRepository.findDog(dogName, 1);
+        if(dog == null) {
+            throw new DogNotFoundException();
+        }
+        dogRepository.changeAllInfo(dogName, newName,newKind,newOwnerName,newOwnerPhoneNumber);
+    }
+    public void addMedicalRecords(String dogName, String newMedicalRecords){
+        Dog dog = dogRepository.findDog(dogName, 1);
+        if(dog == null) {
+            throw new DogNotFoundException();
+        }
+        dogRepository.addMedicalRecords(dogName, newMedicalRecords);
+    }
     /*
     public List<String> addMedicalRecords(String dogName, String newMedicalRecords) {
         Dog dog = dogRepository.findDog(dogName, 1);
