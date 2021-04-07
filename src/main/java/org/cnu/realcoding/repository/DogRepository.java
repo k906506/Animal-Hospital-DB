@@ -8,17 +8,13 @@ import org.springframework.data.mongodb.core.query.*;
 import java.util.List;
 
 import lombok.Getter;
-import org.cnu.realcoding.domain.Dog;
-import org.cnu.realcoding.exception.DogNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+
 
 @Service
 public class DogRepository {

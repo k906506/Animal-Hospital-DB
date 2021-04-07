@@ -1,9 +1,7 @@
 package org.cnu.realcoding.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.exception.AlreadyExist;
-import org.cnu.realcoding.exception.DogNotFoundException;
 import org.cnu.realcoding.service.DogManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
