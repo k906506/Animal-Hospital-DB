@@ -1,6 +1,5 @@
 package org.cnu.realcoding.service;
 
-import lombok.Getter;
 import org.cnu.realcoding.domain.Dog;
 import org.cnu.realcoding.exception.AlreadyExist;
 import org.cnu.realcoding.exception.DogNotFoundException;
@@ -8,7 +7,6 @@ import org.cnu.realcoding.repository.DogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
