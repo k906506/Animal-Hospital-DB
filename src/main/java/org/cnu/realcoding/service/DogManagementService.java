@@ -6,10 +6,12 @@ import org.cnu.realcoding.exception.AlreadyExist;
 import org.cnu.realcoding.exception.DogNotFoundException;
 import org.cnu.realcoding.repository.DogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DogManagementService {
 
     @Autowired
@@ -59,17 +61,16 @@ public class DogManagementService {
     }
 
 
-    public Dog changeDogKind(String dogName, String newKind) {
+    public void changeDogKind(String dogName, String newKind) {
         Dog dog = dogRepository.findDog(dogName, 1);
 
         if(dog == null) {
             throw new DogNotFoundException();
         }
-        dog = dogRepository.changeDogKind(newKind);
-
-        return dog;
+        dogRepository.changeDogKind(dogName, newKind);
     }
 
+    /*
     public List<String> addMedicalRecords(String dogName, String newMedicalRecords) {
         Dog dog = dogRepository.findDog(dogName, 1);
 
@@ -91,4 +92,5 @@ public class DogManagementService {
         dog = dogRepository.changeAllInfo(newName, newKind, newOwnerName, newOwnerPhoneNumber);
         return dog;
     }
+    */
 }

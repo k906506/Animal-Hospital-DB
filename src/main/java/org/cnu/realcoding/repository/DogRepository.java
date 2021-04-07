@@ -3,8 +3,7 @@ package org.cnu.realcoding.repository;
 import org.cnu.realcoding.exception.InvalidInput;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.cnu.realcoding.domain.Dog;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.*;
 
 import java.util.List;
 
@@ -15,20 +14,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
+@Service
 public class DogRepository {
     @Autowired
     MongoTemplate mongoTemplate;
+
     @Getter
-    @Autowired
     private List<Dog> dogs = new ArrayList<>();
 
     public void insertDog(Dog dog) {
-
+        mongoTemplate.insert(dog);
         //
     }
 
@@ -54,18 +55,23 @@ public class DogRepository {
         return dog;
     }
 
-    public Dog changeDogKind(String newKind) {
-        // return changedDog
+    public void changeDogKind(String name, String newKind) {    // dogName으로 찾은 dog, kind 변경
+        Query query = new Query(Criteria.where("name").is(name));
+        Update update = Update.update("kind", newKind);
+        mongoTemplate.updateFirst(query, update, Dog.class);
     }
 
+    /*
     public List<String> addMedicalRecords(String newMedicalRecords) {
         // return added new List;
     }
+
 
     public Dog changeAllInfo(String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
 
         //mongoTemplate.insert(dog); // 데이터 추
     }
+     */
 
     public boolean checkDogName(String name){ // 이름으로 검색
         for(Dog dog : dogs){
