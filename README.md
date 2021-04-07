@@ -1,5 +1,5 @@
-# 기능 1. 강아지 이름으로 검색 -> 구현 O
 ```java
+# 기능 1. 강아지 이름으로 검색 -> 구현 O
 http://localhost:8011/dogs/name/{dogName}
 ```
 
