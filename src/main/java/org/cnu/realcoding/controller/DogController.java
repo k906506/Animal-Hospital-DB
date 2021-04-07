@@ -63,8 +63,8 @@ public class DogController {
         dogManagementService.changeAllInfo(oldName, newName, newKind, newOwnerName, newOwnerPhoneNumber);
     }
 
-    @PatchMapping("/dogs/medicalRecords/add/{newMedcialRecords}")
-    public void addMedicalRecords(@PathVariable String dogName, @RequestBody String newMedicalRecords){
+    @RequestMapping(value="/dogs/{dogName}/add/{newMedicalRecords}" , method = {RequestMethod.GET, RequestMethod.PATCH})
+    public void addMedicalRecords(@PathVariable String dogName, @PathVariable String newMedicalRecords){
         // dogName으로 dog 검색하여 newMedicalRecords 추가
         dogManagementService.addMedicalRecords(dogName, newMedicalRecords);
     }
