@@ -34,12 +34,15 @@ public class DogManagementService {
     }
 
     public Dog getDogByName(String name) {
-        for (Dog dog : dogRepository.getDogs()) {
-            if (!dog.getName().equals(name)) { // 이름이 겹치면
-                throw new DogNotFoundException(); // 에러
+        for (Dog dog : dogRepository.getAllDogs()) {
+            System.out.println(dog);
+            System.out.println(dog.getName());
+            if (dog.getName().equals(name)) { // 이름이 겹치면
+                return dogRepository.findDog(name, 1); // 조회 후 반환
             }
         }
-        return dogRepository.findDog(name, 1); // 조회 후 반환
+        throw new DogNotFoundException(); // 에러
+
     }
 
     public Dog getDogByOwner(String owner){
