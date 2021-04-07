@@ -65,7 +65,11 @@ public class DogRepository {
 
 
     public void addMedicalRecords(String name, String newMedicalRecords) {
+        Update up = new Update();
+        up.push("medicalRecords").each(newMedicalRecords);
+        Query query = new Query(Criteria.where("name").is(name));
 
+        mongoTemplate.updateFirst(query,up,"dog");
     }
 
 
