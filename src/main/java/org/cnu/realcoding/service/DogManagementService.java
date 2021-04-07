@@ -29,21 +29,23 @@ public class DogManagementService {
 
 
     public List<Dog> getAllDogs() {
-        return dogRepository.getDogs();
+        return dogRepository.getAllDogs();
 
     }
 
     public Dog getDogByName(String name) {
-        for (Dog dog : dogRepository.getDogs()) {
+        for (Dog dog : dogRepository.getAllDogs()) {
             if (!dog.getName().equals(name)) { // 이름이 겹치면
                 throw new DogNotFoundException(); // 에러
             }
         }
-        return dogRepository.findDog(name, 1); // 조회 후 반환
+        System.out.println("Not error");
+        return dogRepository.findDogFromName(name); // 조회 후 반환
     }
 
+    /*
     public Dog getDogByOwner(String owner){
-        for (Dog dog : dogRepository.getDogs()) {
+        for (Dog dog : dogRepository.getAllDogs()) {
             if (!dog.getName().equals(owner)) { // 주인 이름이 겹치면
                 throw new DogNotFoundException(); // 에러
             }   
@@ -52,7 +54,7 @@ public class DogManagementService {
     }
 
     public Dog getDogByOwnerPhoneNumber(String number){
-        for (Dog dog : dogRepository.getDogs()) {
+        for (Dog dog : dogRepository.getAllDogs()) {
             if (!dog.getName().equals(number)) { // 폰 번호가 겹치면
                 throw new DogNotFoundException();// 에러
             }
@@ -62,15 +64,19 @@ public class DogManagementService {
 
 
     public void changeDogKind(String dogName, String newKind) {
+
+        System.out.println("teset statst");
         Dog dog = dogRepository.findDog(dogName, 1);
+        System.out.println("123213123 statst");
 
         if(dog == null) {
             throw new DogNotFoundException();
         }
+        System.out.println("teset eddfd");
+
         dogRepository.changeDogKind(dogName, newKind);
     }
 
-    /*
     public List<String> addMedicalRecords(String dogName, String newMedicalRecords) {
         Dog dog = dogRepository.findDog(dogName, 1);
 

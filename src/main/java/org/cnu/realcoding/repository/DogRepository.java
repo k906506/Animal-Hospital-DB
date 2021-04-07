@@ -28,31 +28,22 @@ public class DogRepository {
     @Getter
     private List<Dog> dogs = new ArrayList<>();
 
+    public List<Dog> getAllDogs(){
+        dogs = mongoTemplate.findAll(Dog.class);
+        System.out.println(dogs);
+        return dogs;
+    }
     public void insertDog(Dog dog) {
         mongoTemplate.insert(dog);
         //
     }
 
-    public Dog findDog(String name, int i) {
-        Criteria cri;
-        switch (i){
-            case 1:
-                cri = new Criteria("name"); // 키 입력
-                break;
-            case 2:
-                cri = new Criteria("ownerName"); // 키 입력
-                break;
-            case 3:
-                cri = new Criteria("ownerPhoneNumber"); // 키 입력
-                break;
-            default:
-                throw new InvalidInput();
-
-        }
-        cri.is(name); // 밸류 입력
-        Query query = new Query(cri);
-        Dog dog = (Dog) mongoTemplate.find(query, mongoTemplate.getClass()); // 조회 후 데이터 반환
-        return dog;
+    public Dog findDogFromName(String name) { // name으로 dog를 찾는 query문
+        return mongoTemplate
+                .findOne(
+                        Query.query(Criteria.where("name").is(name)),
+                        Dog.class
+                );
     }
 
     public void changeDogKind(String name, String newKind) {    // dogName으로 찾은 dog, kind 변경
