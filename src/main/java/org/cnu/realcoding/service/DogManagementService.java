@@ -59,6 +59,14 @@ public class DogManagementService {
         throw new DogNotFoundException(); // 에러
     }
 
+    public Dog getDogByAllParameter(String name, String ownerName, String ownerPhoneNumber){  // 세 가지 파라미터를 모두 파라미터로 받는 api
+        Dog dog = dogRepository.findDogFromAllParameter(name, ownerName, ownerPhoneNumber);
+        if (dog == null){
+            throw new DogNotFoundException();
+        }
+        return dog;
+    }
+
 
     public void changeDogKind(String unique ,String newKind) {
         int i = 0;

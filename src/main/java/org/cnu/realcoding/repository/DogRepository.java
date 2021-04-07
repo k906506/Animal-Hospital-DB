@@ -49,6 +49,17 @@ public class DogRepository {
         return mongoTemplate.findOne(query, Dog.class); // 조회 후 데이터 반환
     }
 
+    public Dog findDogFromAllParameter(String name, String ownerName, String ownerPhoneNumber) { // 세 가지 파라미터로 dog를 찾는 query문
+        return mongoTemplate
+                .findOne(
+                        Query.query(Criteria.where("name").is(name)
+                                .and("ownerName").is(ownerName)
+                                .and("ownerPhoneNumber").is(ownerPhoneNumber)
+                        ),
+                        Dog.class
+                );
+    }
+
     public void changeDogKind(String value,int i, String newKind) {    // dogName 으로 찾은 dog, kind 변경
         Criteria cri;
 

@@ -1,7 +1,6 @@
 package org.cnu.realcoding.controller;
 
 import org.cnu.realcoding.domain.Dog;
-import org.cnu.realcoding.exception.AlreadyExist;
 import org.cnu.realcoding.service.DogManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,24 +40,28 @@ public class DogController {
         return dogManagementService.getDogByOwnerPhoneNumber(ownerPhoneNumber);
     }
 
+    @GetMapping("/dogs/AllPara/{name}/{ownerName}/{ownerPhoneNumber}") // 세 가지 변수로 검색은 /AllPara/,,
+    public Dog getDogByAllPara(@PathVariable String name, @PathVariable String ownerName, @PathVariable String ownerPhoneNumber) {
+        return dogManagementService.getDogByAllParameter(name, ownerName, ownerPhoneNumber);
+    }
+
     @RequestMapping(value="/dogs/change/{unique}/{newKind}" , method = {RequestMethod.GET, RequestMethod.PATCH})
-    public String changeDogKind(@PathVariable String unique,@PathVariable String newKind){
-        // dogName으로 dog 검색하여 newKind로 품종 변경
+    public String changeDogKind(@PathVariable String unique, @PathVariable String newKind){
+        // dogName, ownerName, ownerPhoneNumber로 dog를 검색하여 newKind로 품종 변경.
         dogManagementService.changeDogKind(unique, newKind);
         return "\n품종 변경 완료";
     }
 
     @RequestMapping(value="/dogs/change/{oldName}/{newName}/{newKind}/{newOwnerName}/{newOwnerPhoneNumber}" , method = {RequestMethod.GET, RequestMethod.PATCH})
     public String changeAllInfo(@PathVariable String oldName, @PathVariable String newName, @PathVariable String newKind, @PathVariable String newOwnerName, @PathVariable String newOwnerPhoneNumber){
-        // 이전 강아지 이름으로 모든 variable 변경
+        // dogName으로 모든 Data Set 변경.
         dogManagementService.changeAllInfo(oldName, newName, newKind, newOwnerName, newOwnerPhoneNumber);
         return "\nData Set 변경 완료";
-
     }
 
     @RequestMapping(value="/dogs/add/{dogName}/{newMedicalRecords}" , method = {RequestMethod.GET, RequestMethod.PATCH})
     public String addMedicalRecords(@PathVariable String dogName, @PathVariable String newMedicalRecords){
-        // dogName으로 dog 검색하여 newMedicalRecords 추가
+        // dogName으로 검색하여 newMedicalRecords 추가.
         dogManagementService.addMedicalRecords(dogName, newMedicalRecords);
         return "\n진료 기록 추가";
     }
