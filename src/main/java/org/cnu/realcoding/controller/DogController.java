@@ -54,7 +54,7 @@ public class DogController {
     }
 
     // HTTP Method : Patch
-    @PatchMapping("/dogs/kind/change/{newKind}")
+    @PatchMapping("/dogs/{name}}/change/{newKind}")
     public void changeDogKind(@PathVariable String dogName,@RequestBody String newKind){
         // dogName으로 dog 검색하여 newKind로 품종 변경
         dogManagementService.changeDogKind(dogName, newKind);
