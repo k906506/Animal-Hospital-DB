@@ -53,7 +53,7 @@ public class DogRepository {
         }
         cri.is(name); // 밸류 입력
         Query query = new Query(cri);
-        Dog dog = (Dog) mongoTemplate.find(query, mongoTemplate.getClass()); // 조회 후 데이터 반환
+        Dog dog =  mongoTemplate.findOne(query, Dog.class); // 조회 후 데이터 반환
         return dog;
     }
 
