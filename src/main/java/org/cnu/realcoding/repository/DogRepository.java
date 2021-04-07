@@ -72,10 +72,10 @@ public class DogRepository {
     public void changeAllInfo(String name, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
         //dogName으로 찾은 dog의 모든 정보 변경
         Query query = new Query(Criteria.where("name").is(name));
-        Update update_name = Update.update("name", newName);
         Update update_kind = Update.update("kind", newKind);
         Update update_OwnerName = Update.update("ownerName", newOwnerName);
         Update update_OwnerPhoneNumber = Update.update("ownerPhoneNumber", newOwnerPhoneNumber);
+        Update update_name = Update.update("name", newName);
         mongoTemplate.updateFirst(query, update_name, Dog.class);
         mongoTemplate.updateFirst(query, update_kind, Dog.class);
         mongoTemplate.updateFirst(query, update_OwnerName, Dog.class);

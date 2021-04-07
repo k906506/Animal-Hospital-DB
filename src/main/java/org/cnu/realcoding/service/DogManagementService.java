@@ -79,6 +79,8 @@ public class DogManagementService {
         }
         dogRepository.changeAllInfo(dogName, newName,newKind,newOwnerName,newOwnerPhoneNumber);
     }
+
+
     public void addMedicalRecords(String dogName, String newMedicalRecords){
         Dog dog = dogRepository.findDog(dogName, 1);
         if(dog == null) {
