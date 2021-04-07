@@ -29,7 +29,7 @@ public class DogManagementService {
 
 
     public List<Dog> getAllDogs() {
-        return dogRepository.getDogs();
+        return dogRepository.getAllDogs();
 
     }
 

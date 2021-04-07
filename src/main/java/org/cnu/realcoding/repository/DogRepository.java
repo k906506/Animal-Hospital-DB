@@ -32,7 +32,9 @@ public class DogRepository {
         mongoTemplate.insert(dog);
         //
     }
-
+    public List<Dog> getAllDogs(){
+        return mongoTemplate.findAll(Dog.class);
+    }
     public Dog findDog(String name, int i) {
         Criteria cri;
         switch (i){
