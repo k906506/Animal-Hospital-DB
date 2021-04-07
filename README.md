@@ -1,3 +1,5 @@
+# 모든 기능 구현 완료! 😁
+
 ```java
 # 기능 1. 강아지 이름으로 검색 -> 구현 O
 http://localhost:8011/dogs/name/{dogName}
@@ -38,5 +40,3 @@ http://localhost:8011/dogs/change/{oldName}/{newName}/{newKind}/{newOwnerName}/{
 # 기능 7. 강아지 이름으로 검색하고 새로운 건강검진 기록 추가 -> 구현 O
 http://localhost:8011/dogs/add/{dogName}/{newMedicalRecords}
 ```
-
-# 모든 기능 구현 완료! 😁
