@@ -1,0 +1,228 @@
+[33mcommit 1c762c8367544890983a18a0475f1dea939e1133[m[33m ([m[1;36mHEAD -> [m[1;32mshs[m[33m, [m[1;31morigin/shs[m[33m)[m
+Merge: f3a5a17 c70a1b5
+Author: Dohyeon Ko <33795856+k906506@users.noreply.github.com>
+Date:   Wed Apr 7 15:18:18 2021 +0900
+
+    Merge pull request #16 from 201702083/chs5
+    
+    안쓰는 코드 삭제
+
+[33mcommit c70a1b52b736cf7be3ae1fd06b7c73b4e29c3388[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Wed Apr 7 15:17:28 2021 +0900
+
+    erase not using package
+
+[33mcommit f3a5a17f0c69011a0460c06bee031fad3464c460[m
+Merge: ed5ceba b3bf8ee
+Author: Dohyeon Ko <33795856+k906506@users.noreply.github.com>
+Date:   Wed Apr 7 14:06:06 2021 +0900
+
+    Merge pull request #10 from 201702083/chs2
+    
+    find() -> findOne() null 에러 해결
+
+[33mcommit b3bf8ee95a77a980703f923ab091b6b19a4e2bc5[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Wed Apr 7 14:04:27 2021 +0900
+
+    find() -> findOne() null 에러 해결
+
+[33mcommit ed5cebafc45aea4c230df2530098f1ac6a60614a[m
+Merge: 19c6e1c 829f104
+Author: Dohyeon Ko <33795856+k906506@users.noreply.github.com>
+Date:   Wed Apr 7 13:49:12 2021 +0900
+
+    Merge pull request #9 from 201702083/chs1
+    
+    getAllDogs () 반환 함수 작성
+
+[33mcommit 829f1044e408d413467aeb80914350455fca57b2[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Wed Apr 7 13:47:40 2021 +0900
+
+    모든 강아지 리스트 반환 함수 작성
+
+[33mcommit 19c6e1cab491cb800c7ef6a4bc1367b245f67fa6[m
+Merge: bbcb6e7 a491408
+Author: heeseung <tlsgmltmd726529@gmail.com>
+Date:   Wed Apr 7 13:25:35 2021 +0900
+
+    Merge pull request #8 from sinheeseung/master
+    
+    change AllInfo addMedicalRecords작성
+
+[33mcommit a4914088ff2d631e8432da05fbca1126c2d22434[m
+Author: heeseung <tlsgmltmd726529@gmail.com>
+Date:   Wed Apr 7 13:23:07 2021 +0900
+
+    change AllInfo addMedicalRecords작성
+
+[33mcommit bbcb6e76b902cf70f0c96d1be15ee217742652e0[m
+Merge: 8c2b069 dfe8071
+Author: Dohyeon Ko <33795856+k906506@users.noreply.github.com>
+Date:   Wed Apr 7 11:19:16 2021 +0900
+
+    Merge pull request #7 from k906506/kdh6
+    
+    Kdh6
+
+[33mcommit dfe80712fae24c28a75ba8976e65970e023fa126[m[33m ([m[1;31morigin/kdh6[m[33m)[m
+Author: k906506 <k906506@naver.com>
+Date:   Wed Apr 7 11:15:42 2021 +0900
+
+    mongoDB 연결 test
+
+[33mcommit fa6ccc4a5ee95cec020ba6394cd94801c88abfda[m
+Author: k906506 <k906506@naver.com>
+Date:   Wed Apr 7 11:15:20 2021 +0900
+
+    dogName으로 찾은 dog, kind 변경
+
+[33mcommit 40c63ff3f5a74dcb9e3afd9e1e81ab9b5dd7bad5[m
+Author: k906506 <k906506@naver.com>
+Date:   Wed Apr 7 11:15:02 2021 +0900
+
+    mongoDB 연결 test
+
+[33mcommit 8c2b069a872481b804731a58106787822167570e[m
+Merge: 6f9e5f9 be32de5
+Author: Dohyeon Ko <33795856+k906506@users.noreply.github.com>
+Date:   Wed Apr 7 01:48:22 2021 +0900
+
+    Merge pull request #6 from k906506/kdh5
+    
+    고도현 - findDog메소드 매개변수 수정.
+
+[33mcommit be32de545aa4c2689f27b56419a4f32abb71b5fc[m[33m ([m[1;31morigin/kdh5[m[33m)[m
+Author: k906506 <k906506@naver.com>
+Date:   Wed Apr 7 01:43:56 2021 +0900
+
+    findDog 매개변수 수정으로 인한 변경
+
+[33mcommit 4706ebfb8cb2ae476de3b8b1b5e338c5dc30dfb2[m
+Author: k906506 <k906506@naver.com>
+Date:   Wed Apr 7 01:41:41 2021 +0900
+
+    findDog 메소드 key값에 따라 다른 값 return
+
+[33mcommit a3d622766b074270274891b0cd012a5a438ff99d[m
+Author: k906506 <k906506@naver.com>
+Date:   Wed Apr 7 01:40:39 2021 +0900
+
+    3개의 파라미터에 해당하지 않은 경우
+
+[33mcommit 6f9e5f9b5330f6173c99ce2e0cdf04f43d9efe3b[m
+Merge: a8bb27a 18a2604
+Author: Dohyeon Ko <33795856+k906506@users.noreply.github.com>
+Date:   Wed Apr 7 00:47:40 2021 +0900
+
+    Merge pull request #5 from Dongheon97/ldh
+    
+    이동헌 - add Problem No.3
+
+[33mcommit 18a2604cfb1c002c05c9a106d3d9f9cefa06de4e[m
+Merge: ab68b66 a8bb27a
+Author: Dongheon Lee <jdd04063@gmail.com>
+Date:   Wed Apr 7 00:43:46 2021 +0900
+
+    add Problem No.3
+
+[33mcommit ab68b66f246ac692d081a5f1b34865be122b7979[m
+Author: Dongheon Lee <jdd04063@gmail.com>
+Date:   Wed Apr 7 00:30:04 2021 +0900
+
+    add at DogRepository
+
+[33mcommit a8bb27ac6b044924edd9c05ed529082478bd79fd[m
+Merge: 50d8101 34ef455
+Author: Dohyeon Ko <33795856+k906506@users.noreply.github.com>
+Date:   Wed Apr 7 00:22:49 2021 +0900
+
+    Merge pull request #3 from 201702083/master
+    
+    최현석 - 강아지 추가, 조회 구현
+
+[33mcommit 34ef455511548f0e7307fad3382e7d6dba779076[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Wed Apr 7 00:18:37 2021 +0900
+
+    insertDog ,getbyname|owner|phonenumber 작성
+
+[33mcommit 838cd55f4ac567c9b28960bd2c524a36ad7ae0ba[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Wed Apr 7 00:18:04 2021 +0900
+
+    insertDog ,getbyname|owner|phonenumber 작성
+
+[33mcommit db4524c8eac53d68719629f2e44ea7c838412163[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Wed Apr 7 00:17:16 2021 +0900
+
+    define mongotemplate, findDog 작성, 중복검사함수 작성
+
+[33mcommit 7945ef8cd04e75e610008ac0d84d78c6b693a7dd[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Wed Apr 7 00:16:20 2021 +0900
+
+    주석 작성
+
+[33mcommit d91d9c3ead26ccfe27d8ad9e68418d48ef3bdc10[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Wed Apr 7 00:15:59 2021 +0900
+
+    add getby owner,phonenumber
+
+[33mcommit caff64a3054a492d4d4c700be2ef727179f73b1f[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Wed Apr 7 00:15:03 2021 +0900
+
+    add Error class
+
+[33mcommit 47b0cf1a8cee99585afe959ca9e4c1ab54de5041[m
+Author: Dongheon Lee <jdd04063@gmail.com>
+Date:   Wed Apr 7 00:15:02 2021 +0900
+
+    add 강아지 정보 수정 기능
+
+[33mcommit 50d8101aaa8326f6a6fadc96416e429dcc4693c0[m
+Merge: d88c234 20a0378
+Author: Dohyeon Ko <33795856+k906506@users.noreply.github.com>
+Date:   Tue Apr 6 22:43:25 2021 +0900
+
+    Merge pull request #2 from 201702083/chs
+    
+    최현석 - swagger 구축 및 mongodb 연결
+
+[33mcommit 20a0378a3ab05a1323597c2d2ffa31cfddeb4d21[m
+Author: 201702083 <201702083@o.cnu.ac.kr>
+Date:   Tue Apr 6 22:40:35 2021 +0900
+
+    swagger, mongodb connect
+
+[33mcommit d88c2342f276f79fc303600d06d48129a588da17[m
+Merge: 7aee904 d92e07c
+Author: Dohyeon Ko <33795856+k906506@users.noreply.github.com>
+Date:   Tue Apr 6 22:31:06 2021 +0900
+
+    Merge pull request #1 from Dongheon97/ldh
+    
+    이동헌 - 프레임 구축 완료.
+
+[33mcommit d92e07cf0703b22ad8243ed885dd47b1fb3b525e[m
+Author: Dongheon Lee <jdd04063@gmail.com>
+Date:   Tue Apr 6 22:19:36 2021 +0900
+
+    add controller, repository, service
+
+[33mcommit 8e51ee902bca158ee76933bec97dd07787d1b70b[m
+Author: Dongheon Lee <jdd04063@gmail.com>
+Date:   Tue Apr 6 21:51:38 2021 +0900
+
+    add domain/Dog
+
+[33mcommit 7aee904213b691fb4b8900931871a2fe0f4743dd[m
+Author: k906506 <k906506@naver.com>
+Date:   Tue Apr 6 21:25:10 2021 +0900
+
+    11조
