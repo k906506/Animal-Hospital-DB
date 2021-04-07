@@ -33,9 +33,13 @@ public class DogManagementService {
 
     public Dog getDogByName(String name) {
         for (Dog dog : dogRepository.getAllDogs()) {
+<<<<<<< HEAD
             System.out.println(dog);
             System.out.println(dog.getName());
             if (dog.getName().equals(name)) { // 이름이 겹치면
+=======
+            if (dog.getName().equals(name)) { // 이름이 일치하면
+>>>>>>> 2ae8da58f09a1e3644dc4292a2dcee7d359afe40
                 return dogRepository.findDog(name, 1); // 조회 후 반환
             }
         }
@@ -44,33 +48,47 @@ public class DogManagementService {
     }
 
     public Dog getDogByOwner(String owner){
-        for (Dog dog : dogRepository.getDogs()) {
-            if (!dog.getName().equals(owner)) { // 주인 이름이 겹치면
-                throw new DogNotFoundException(); // 에러
-            }   
+        for (Dog dog : dogRepository.getAllDogs()) {
+            if (dog.getOwnerName().equals(owner)) { // 이름이 일치하면
+                return dogRepository.findDog(owner, 2); // 조회 후 반환
+            }
         }
-        return dogRepository.findDog(owner, 2); // 조회 후 반환
+        throw new DogNotFoundException(); // 에러
     }
 
     public Dog getDogByOwnerPhoneNumber(String number){
-        for (Dog dog : dogRepository.getDogs()) {
-            if (!dog.getName().equals(number)) { // 폰 번호가 겹치면
-                throw new DogNotFoundException();// 에러
+        for (Dog dog : dogRepository.getAllDogs()) {
+            if (dog.getOwnerPhoneNumber().equals(number)) { // 이름이 일치하면
+                return dogRepository.findDog(number, 3); // 조회 후 반환
             }
         }
-        return dogRepository.findDog(number, 3); // 조회 후 반환
+        throw new DogNotFoundException(); // 에러
+    }
+
+    public Dog getDogByAllParameter(String name, String ownerName, String ownerPhoneNumber){  // 세 가지 파라미터를 모두 파라미터로 받는 api
+        Dog dog = dogRepository.findDogFromAllParameter(name, ownerName, ownerPhoneNumber);
+        if (dog == null){
+            throw new DogNotFoundException();
+        }
+        return dog;
     }
 
 
-    public void changeDogKind(String dogName, String newKind) {
-        Dog dog = dogRepository.findDog(dogName, 1);
+    public void changeDogKind(String unique ,String newKind) {
+        int i = 0;
+        if(dogRepository.checkDogName(unique)) i = 1;
+        if(dogRepository.checkDogOwner(unique)) i = 2;
+        if(dogRepository.checkDogOwnerPhone(unique)) i = 3;
+
+        Dog dog = dogRepository.findDog(unique, i);
 
         if(dog == null) {
             throw new DogNotFoundException();
         }
-        dogRepository.changeDogKind(dogName, newKind);
+        dogRepository.changeDogKind(unique, i , newKind);
     }
 
+<<<<<<< HEAD
     public void changeAllInfo(String dogName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
         Dog dog = dogRepository.findDog(dogName, 1);
         if(dog == null) {
@@ -88,24 +106,21 @@ public class DogManagementService {
     /*
     public List<String> addMedicalRecords(String dogName, String newMedicalRecords) {
         Dog dog = dogRepository.findDog(dogName, 1);
+=======
+>>>>>>> 2ae8da58f09a1e3644dc4292a2dcee7d359afe40
 
-        if(dog == null){
+    public void changeAllInfo(String dogName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
+        Dog dog = dogRepository.findDog(dogName, 1);
+        if(dog == null) {
             throw new DogNotFoundException();
         }
-        List<String> medicalRecords = dogRepository.addMedicalRecords(newMedicalRecords);
-        medicalRecords.add(newMedicalRecords);
-
-        return medicalRecords;
+        dogRepository.changeAllInfo(dogName, newName,newKind,newOwnerName,newOwnerPhoneNumber);
     }
-
-    public Dog changeAllInfo(String oldName, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
-        Dog dog = dogRepository.findDog(oldName, 1);
-
-        if(dog == null){
+    public void addMedicalRecords(String dogName, String newMedicalRecords){
+        Dog dog = dogRepository.findDog(dogName, 1);
+        if(dog == null) {
             throw new DogNotFoundException();
         }
-        dog = dogRepository.changeAllInfo(newName, newKind, newOwnerName, newOwnerPhoneNumber);
-        return dog;
+        dogRepository.addMedicalRecords(dogName, newMedicalRecords);
     }
-    */
 }

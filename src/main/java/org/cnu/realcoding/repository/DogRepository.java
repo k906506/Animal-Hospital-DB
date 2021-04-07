@@ -1,19 +1,26 @@
 package org.cnu.realcoding.repository;
 
 import org.cnu.realcoding.exception.InvalidInput;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.cnu.realcoding.domain.Dog;
 import org.springframework.data.mongodb.core.query.*;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+=======
+>>>>>>> 2ae8da58f09a1e3644dc4292a2dcee7d359afe40
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> 2ae8da58f09a1e3644dc4292a2dcee7d359afe40
 
 
 @Service
@@ -21,18 +28,54 @@ public class DogRepository {
     @Autowired
     MongoTemplate mongoTemplate;
 
-    @Getter
-    private List<Dog> dogs = new ArrayList<>();
 
     public void insertDog(Dog dog) {
         mongoTemplate.insert(dog);
-        //
+
     }
     public List<Dog> getAllDogs(){
         return mongoTemplate.findAll(Dog.class);
     }
+<<<<<<< HEAD
     public Dog findDog(String name, int i) {
+=======
+
+    public Dog findDog(String value, int i) {
+        Criteria cr;
+        switch (i){
+            case 1:
+                cr = new Criteria("name"); // 키 입력
+                break;
+            case 2:
+                cr = new Criteria("ownerName"); // 키 입력
+                break;
+            case 3:
+                cr = new Criteria("ownerPhoneNumber"); // 키 입력
+                break;
+            default:
+                throw new InvalidInput();
+
+        }
+        cr.is(value); // 밸류 입력
+        Query query = new Query(cr);
+        return mongoTemplate.findOne(query, Dog.class); // 조회 후 데이터 반환
+    }
+
+    public Dog findDogFromAllParameter(String name, String ownerName, String ownerPhoneNumber) { // 세 가지 파라미터로 dog를 찾는 query문
+        return mongoTemplate
+                .findOne(
+                        Query.query(Criteria.where("name").is(name)
+                                .and("ownerName").is(ownerName)
+                                .and("ownerPhoneNumber").is(ownerPhoneNumber)
+                        ),
+                        Dog.class
+                );
+    }
+
+    public void changeDogKind(String value,int i, String newKind) {    // dogName 으로 찾은 dog, kind 변경
+>>>>>>> 2ae8da58f09a1e3644dc4292a2dcee7d359afe40
         Criteria cri;
+
         switch (i){
             case 1:
                 cri = new Criteria("name"); // 키 입력
@@ -43,45 +86,67 @@ public class DogRepository {
             case 3:
                 cri = new Criteria("ownerPhoneNumber"); // 키 입력
                 break;
+
             default:
                 throw new InvalidInput();
-
         }
-        cri.is(name); // 밸류 입력
+        cri.is(value); // 밸류 입력
         Query query = new Query(cri);
+<<<<<<< HEAD
         Dog dog =  mongoTemplate.findOne(query, Dog.class); // 조회 후 데이터 반환
         return dog;
     }
 
     public void changeDogKind(String name, String newKind) {    // dogName으로 찾은 dog, kind 변경
         Query query = new Query(Criteria.where("name").is(name));
+=======
+>>>>>>> 2ae8da58f09a1e3644dc4292a2dcee7d359afe40
         Update update = Update.update("kind", newKind);
         mongoTemplate.updateFirst(query, update, Dog.class);
     }
 
 
     public void addMedicalRecords(String name, String newMedicalRecords) {
+<<<<<<< HEAD
 
 
+=======
+        Update up = new Update();
+        up.push("medicalRecords").each(newMedicalRecords);
+        Query query = new Query(Criteria.where("name").is(name));
+
+        mongoTemplate.updateFirst(query,up,"dog");
+>>>>>>> 2ae8da58f09a1e3644dc4292a2dcee7d359afe40
     }
 
 
     public void changeAllInfo(String name, String newName, String newKind, String newOwnerName, String newOwnerPhoneNumber) {
+<<<<<<< HEAD
         //dogName으로 찾은 dog의 모든 정보 변경
+=======
+        //dogName 으로 찾은 dog 의 모든 정보 변경
+>>>>>>> 2ae8da58f09a1e3644dc4292a2dcee7d359afe40
         Query query = new Query(Criteria.where("name").is(name));
         Update update_name = Update.update("name", newName);
         Update update_kind = Update.update("kind", newKind);
         Update update_OwnerName = Update.update("ownerName", newOwnerName);
         Update update_OwnerPhoneNumber = Update.update("ownerPhoneNumber", newOwnerPhoneNumber);
+<<<<<<< HEAD
         mongoTemplate.updateFirst(query, update_name, Dog.class);
         mongoTemplate.updateFirst(query, update_kind, Dog.class);
         mongoTemplate.updateFirst(query, update_OwnerName, Dog.class);
         mongoTemplate.updateFirst(query, update_OwnerPhoneNumber, Dog.class);
+=======
+        mongoTemplate.updateFirst(query, update_kind, Dog.class);
+        mongoTemplate.updateFirst(query, update_OwnerName, Dog.class);
+        mongoTemplate.updateFirst(query, update_OwnerPhoneNumber, Dog.class);
+        mongoTemplate.updateFirst(query, update_name, Dog.class);
+>>>>>>> 2ae8da58f09a1e3644dc4292a2dcee7d359afe40
     }
 
 
     public boolean checkDogName(String name){ // 이름으로 검색
-        for(Dog dog : dogs){
+        for(Dog dog : mongoTemplate.findAll(Dog.class)){
             if (dog.getName().equals(name)) {
                 return true;
             }
@@ -89,7 +154,7 @@ public class DogRepository {
         return false;
     }
     public boolean checkDogOwner(String Owner){ // 주인이름으로 검색
-        for(Dog dog : dogs){
+        for(Dog dog : mongoTemplate.findAll(Dog.class)){
             if (dog.getOwnerName().equals(Owner)) {
                 return true;
             }
@@ -97,7 +162,7 @@ public class DogRepository {
         return false;
     }
     public boolean checkDogOwnerPhone(String number){ // 주인 번호로 검
-        for(Dog dog : dogs){
+        for(Dog dog : mongoTemplate.findAll(Dog.class)){
             if (dog.getOwnerPhoneNumber().equals(number)) {
                 return true;
             }
